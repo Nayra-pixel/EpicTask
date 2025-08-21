@@ -16,38 +16,12 @@
 
     <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center">
 
-        <div class="card card-border bg-base-300 w-96">
+        <div th:each="task : ${tasks}" class="card card-border bg-base-300 w-96">
             <div class="badge soft-primary m-4">50 pontos</div>
     
             <div class="card-body items-center">
-                <h2 class="card-title">Criar o bd</h2>
-                <p>Criar banco com 3 tabelas no mysql</p>
-                <div class="radial-progress bg-primary text-primary-content border-primary border-4" style="--value:70;" aria-valuenow="70" role="progressbar"> 70%
-                </div>
-            </div>
-            <div class="card-actions justify-end m-4">
-            <button class="btn btn-error btn-soft">Apagar</button>
-            </div>
-        </div>
-        <div class="card card-border bg-base-300 w-96">
-            <div class="badge soft-primary m-4">50 pontos</div>
-    
-            <div class="card-body items-center">
-                <h2 class="card-title">Criar o bd</h2>
-                <p>Criar banco com 3 tabelas no mysql</p>
-                <div class="radial-progress bg-primary text-primary-content border-primary border-4" style="--value:70;" aria-valuenow="70" role="progressbar"> 70%
-                </div>
-            </div>
-            <div class="card-actions justify-end m-4">
-            <button class="btn btn-error btn-soft">Apagar</button>
-            </div>
-        </div>
-        <div class="card card-border bg-base-300 w-96">
-            <div class="badge soft-primary m-4">50 pontos</div>
-    
-            <div class="card-body items-center">
-                <h2 class="card-title">Criar o bd</h2>
-                <p>Criar banco com 3 tabelas no mysql</p>
+                <h2 class="card-title" th:text = "${task.title}"></h2>
+                <p th:text = "${task.descripition}"></p>
                 <div class="radial-progress bg-primary text-primary-content border-primary border-4" style="--value:70;" aria-valuenow="70" role="progressbar"> 70%
                 </div>
             </div>
@@ -57,15 +31,6 @@
         </div>
         
     </main>
-
-
-    <h2>Lista de Tarefas</h2>
-
-    <ul>
-        <li>Tarefa 1</li>
-        <li>Tarefa 2</li>
-        <li>Tarefa 3</li>
-    </ul>
 
 </body>
 </html>
