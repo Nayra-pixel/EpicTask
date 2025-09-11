@@ -22,12 +22,16 @@
     <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center">
 
         <div th:each="task : ${tasks}" class="card card-border bg-base-300 w-96">
-            <div class="badge soft-primary m-4">50 pontos</div>
+            <div class="badge soft-primary m-4" th:text="${task.score + ' pontos'}"></div>
     
             <div class="card-body items-center">
                 <h2 class="card-title" th:text = "${task.title}"></h2>
                 <p th:text = "${task.descripition}"></p>
-                <div class="radial-progress bg-primary text-primary-content border-primary border-4" style="--value:70;" aria-valuenow="70" role="progressbar"> 70%
+                <div class="radial-progress bg-primary text-primary-content border-primary border-4" 
+                th:style="${'--value:' + task.status}" 
+                aria-valuenow="70" 
+                role="progressbar" 
+                th:text="${task.status + '%'}"> 
                 </div>
             </div>
             <div class="card-actions justify-end m-4">

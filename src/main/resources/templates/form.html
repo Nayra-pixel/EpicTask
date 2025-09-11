@@ -10,25 +10,25 @@
 </head>
 <body>
 
-    <form action="" class="mx-auto mt-8 w-lg" method="post">
+    <form action="" class="mx-auto mt-8 w-lg" method="post" th:object="${task}">
         <h2 class="text-2xl font-bold text-primary">Novo Procedimento</h2>
 
         <fieldset class="fieldset">
             <legend class="fieldset-legend">Procedimento</legend>
             <input name="title" type="text" class="input" placeholder="Tipo de procedimento" />
-            <p class="label">*Digite o Procedimento</p>
+            <p class="label text error" th:errors="*{title}"></p>
         </fieldset>
 
         <fieldset class="fieldset">
             <legend class="fieldset-legend">Descrição</legend>
             <input name="descripition" type="text" class="input" placeholder="Descrição do procedimento" />
-            <p class="label">*Minímo 10 caracteres</p>
+            <p class="label text error" th:errors="*{descripition}"></p>
         </fieldset>
 
         <fieldset class="fieldset">
             <legend class="fieldset-legend">Pontos</legend>
             <input name="score" type="number" class="input"/>
-            <p class="label">Pontuação: 0 a 100</p>
+            <p class="label text error" th:errors="*{score}"></p>
         </fieldset>
 
         <div>
