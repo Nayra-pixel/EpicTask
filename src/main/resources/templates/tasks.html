@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br" data-theme="valentine">
+<html lang="en" data-theme="valentine">
 <head>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -12,11 +12,31 @@
 
     <div class="navbar bg-base-200 shadow-sm mb-4">
         <a class="btn btn-ghost text-xl">KimPet</a>
+        <div class="flex-none">
+            <ul class="menu menu-horizontal px-1">
+                <li>
+                    <details>
+                        <summary>Lang</summary>
+                        <ul class="bg-base-100 rounded-t-none p-2">
+                            <li><a href="?lang=pt_BR">Português</a></li>
+                            <li><a href="?lang=en_US">English</a></li>
+                            <li><a href="?lang=fr">Français</a></li>
+                        </ul>
+                    </details>
+                </li>
+            </ul>
+        </div>
     </div>
 
     <a href="/tasks/form" class="btn btn-primary">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-plus-icon lucide-circle-plus"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
-        Nova tarefa
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-circle-plus-icon lucide-circle-plus">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M8 12h8" />
+            <path d="M12 8v8" />
+        </svg>
+        <span th:text="#{task.new}"></span>
     </a>
 
     <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center">
@@ -24,18 +44,19 @@
         <div th:each="task : ${tasks}" class="card card-border bg-base-300 w-96">
             <div class="badge soft-primary m-4" th:text="${task.score + ' pontos'}"></div>
     
+            <div th:each="task : ${tasks}" class="card card-border bg-base-300 w-96">
+            <div class="badge badge-accent m-4" th:text="${task.score}"></div>
             <div class="card-body items-center">
-                <h2 class="card-title" th:text = "${task.title}"></h2>
-                <p th:text = "${task.descripition}"></p>
-                <div class="radial-progress bg-primary text-primary-content border-primary border-4" 
-                th:style="${'--value:' + task.status}" 
-                aria-valuenow="70" 
-                role="progressbar" 
-                th:text="${task.status + '%'}"> 
+                <h2 class="card-title" th:text="${task.title}"></h2>
+                <p th:text="${task.description}"></p>
+                <div class="radial-progress bg-primary text-primary-content border-primary border-4"
+                    th:style="${'--value:' + task.status}" aria-valuenow="70" role="progressbar"
+                    th:text="${task.status + '%'}">
+                    70%
                 </div>
             </div>
             <div class="card-actions justify-end m-4">
-            <button class="btn btn-error btn-soft">Apagar</button>
+             <button class="btn btn-error btn-soft" th:text="#{delete}"></button>
             </div>
         </div>
         
