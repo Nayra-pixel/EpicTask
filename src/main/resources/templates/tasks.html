@@ -53,6 +53,9 @@
         <span th:text="#{task.new}"></span>
     </a>
 
+    <div th:if="${message != null}" role="alert" class="alert alert-success alert-soft m-4">
+        <span th:text="${message}"></span>
+    </div>
     <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center">
 
         <div th:each="task : ${tasks}" class="card card-border bg-base-300 w-96">
@@ -70,7 +73,12 @@
                 </div>
             </div>
             <div class="card-actions justify-end m-4">
-             <button class="btn btn-error btn-soft" th:text="#{delete}"></button>
+
+            <form method="POST" th:action="${'/tasks/' + task.id}">
+                <input type="hidden" name="_method" value="delete" />
+                <button class="btn btn-error btn-soft" th:text="#{delete}"></button>
+            </form>
+            
             </div>
         </div>
         
