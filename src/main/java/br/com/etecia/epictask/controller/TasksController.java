@@ -1,6 +1,8 @@
 package br.com.etecia.epictask.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,8 +26,10 @@ public class TasksController {
     private TaskRepository repository;
 
     @GetMapping
-    public String listTasks(Model model){
+    public String listTasks(Model model,@AuthenticationPrincipal OAuth2User user){
         model.addAttribute("tasks", repository.findAll());
+        model.addAttribute("user", user);
+        
         return "tasks";
     }
 
